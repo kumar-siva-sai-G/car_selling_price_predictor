@@ -81,7 +81,7 @@ pandas==2.2.3
 pandocfilters==1.5.1
 parso==0.8.4
 peewee==3.17.9
-pillow==11.2.1
+pillow==11.2.0
 platformdirs==4.3.7
 prometheus_client==0.21.1
 prompt_toolkit==3.0.50
@@ -96,7 +96,6 @@ pyparsing==3.2.3
 python-dateutil==2.9.0.post0
 python-json-logger==3.3.0
 pytz==2025.2
-pywin32==310
 pywinpty==2.0.15
 PyYAML==6.0.2
 pyzmq==26.4.0
