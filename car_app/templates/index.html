@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Selling Price Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            color: #444;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, select, button {
+            margin-top: 10px;
+            padding: 8px;
+            width: 280px;
+            max-width: 100%;
+            font-size: 16px;
+        }
+        button {
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        ul {
+            list-style: decimal inside;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2> 🚗 🚗 Car Selling Price Predictor</h2>
+
+    <!-- Form to get book name by index -->
+    <div class="form-container">
+        <form method="POST">
+            {% csrf_token %}
+            <label>🔍 Enter car details :: get car price:</label><br>
+            <input type="text" name="name" list="names" placeholder="Enter Car name">
+            <datalist id="names">
+                {% for name in names %}
+                    <option value="{{ name }}">
+                {% endfor %}
+            </datalist>
+            <br>
+            <input type="number" name="year" min="0" placeholder="Enter bought Year">
+            <br>
+            <input type="text" name="fuel" list="fuels" placeholder="Enter Fuel type">
+            <datalist id="fuels">
+                {% for fuel in fuels %}
+                    <option value="{{ fuel }}">
+                {% endfor %}
+            </datalist>
+            <br>
+            <input type="number" name="kms" min="0" placeholder="Enter KMS driven">
+            <br>
+            <input type="text" name="company" list="companies" placeholder="Enter Company name">
+            <datalist id="companies">
+                {% for company in companies %}
+                    <option value="{{ company }}">
+                {% endfor %}
+            </datalist>
+            <br>
+            
+            <button type="submit" name="action" value="get_title">Get Title</button>
+        </form>
+        {% if result %}
+            <div class="result">✅ Current Selling price of the car is : <em>{{ result }}</em> .rs</div>
+        {% endif %}
+    </div>
+
+    <div>
+        {% if error %}
+            <div class="result" style="color: red;">⚠️ {{ error }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
